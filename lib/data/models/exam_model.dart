@@ -1,58 +1,22 @@
-import 'package:hive/hive.dart';
+import '../../domain/entities/exam.dart';
 
-part 'exam_model.g.dart';
-
-@HiveType(typeId: 1)
-class Exam extends HiveObject {
-  @HiveField(0)
-  String id;
-
-  @HiveField(1)
-  String title;
-
-  @HiveField(2)
-  int year;
-
-  @HiveField(3)
-  String subject;
-
-  @HiveField(4)
-  String examType; // rouge / blanc
-
-  @HiveField(5)
-  String diplomaType; // none / bepec / bac
-
-  @HiveField(6)
-  String? serieBac; // A, C, D, etc.
-
-  @HiveField(7)
-  String examFileUrl;
-
-  @HiveField(8)
-  String? correctionFileUrl;
-
-  @HiveField(9)
-  bool isPremium;
-
-  @HiveField(10)
-  DateTime createdAt;
-
-  Exam({
-    required this.id,
-    required this.title,
-    required this.year,
-    required this.subject,
-    required this.examType,
-    required this.diplomaType,
-    this.serieBac,
-    required this.examFileUrl,
-    this.correctionFileUrl,
-    required this.isPremium,
-    required this.createdAt,
+class ExamModel extends Exam {
+  const ExamModel({
+    required super.id,
+    required super.title,
+    required super.year,
+    required super.subject,
+    required super.examType,
+    required super.diplomaType,
+    super.serieBac,
+    required super.examFileUrl,
+    super.correctionFileUrl,
+    required super.isPremium,
+    required super.createdAt,
   });
 
-  factory Exam.fromJson(Map<String, dynamic> json) {
-    return Exam(
+  factory ExamModel.fromJson(Map<String, dynamic> json) {
+    return ExamModel(
       id: json['id'],
       title: json['title'],
       year: json['year'],
